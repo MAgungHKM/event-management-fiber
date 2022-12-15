@@ -29,17 +29,17 @@ func main() {
 
 	cfg := config.Main{
 		AppName: flag.String("app-name", env.Get("APP_NAME", "Event Management"), "Application Name"),
-		Port:    flag.String("port", env.Get("APP_PORT", "3000"), "Port to listen on"),
+		Port:    flag.String("port", env.Get("PORT", "3000"), "Port to listen on"),
 		Prod:    flag.Bool("prod", utils.ParseBool(env.Get("IS_PRODUCTION", "false")), "Enable prefork in Production"),
 	}
 
 	flag.Parse()
 
 	// Set dynamic host for Swagger documentation
-	fullUrl := strings.Split(env.Get("APP_URL", "http://127.0.0.1:3000"), "://")
+	fullUrl := strings.Split(env.Get("APP_URL", "http://0.0.0.0:3000"), "://")
 	scheme := fullUrl[0]
 	host := fullUrl[1]
-	if port := env.Get("APP_PORT", "3000"); port != "80" && host == "localhost" {
+	if port := env.Get("PORT", "3000"); port != "80" && host == "localhost" {
 		host += fmt.Sprintf(":%s", port)
 	}
 
