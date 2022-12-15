@@ -51,6 +51,5 @@ func main() {
 	docs.SwaggerInfo.Schemes = []string{scheme}
 	docs.SwaggerInfo.Version = version
 
-	// db.Conn.AutoMigrate(&model.User{}, &model.Topic{}, &model.Listener{})
 	app.Setup(cfg)
 }
