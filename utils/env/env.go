@@ -12,7 +12,7 @@ func Setup() {
 	// load .env file
 	err := godotenv.Load(".env")
 	if err != nil {
-		log.Fatalf(err.Error())
+		log.Println("No .env file detected, proceeding.")
 	}
 }
 
