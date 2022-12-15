@@ -1,3 +1,6 @@
+-- +migrate Up
+-- +migrate StatementBegin
+
 --
 -- PostgreSQL database dump
 --
@@ -221,72 +224,10 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 
 --
--- Data for Name: event_participants; Type: TABLE DATA; Schema: public; Owner: sa
---
-
-COPY public.event_participants (id, event_id, name, email, status, created_at, updated_at, deleted_at) FROM stdin;
-\.
-
-
---
--- Data for Name: event_tags; Type: TABLE DATA; Schema: public; Owner: sa
---
-
-COPY public.event_tags (event_id, tag_id, created_at) FROM stdin;
-\.
-
-
---
--- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: sa
---
-
-COPY public.events (id, name, start_date, end_date, description, location, created_by, created_at, updated_at, deleted_at) FROM stdin;
-\.
-
-
---
--- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: sa
---
-
-COPY public.tags (id, name, created_at, updated_at, deleted_at) FROM stdin;
-\.
-
-
---
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: sa
 --
 
-COPY public.users (id, name, username, email, secret, created_at, updated_at, deleted_at) FROM stdin;
-1	M Agung Hikmatullah	magunghkm	magunghkm@mail.co	kUBhtNE+dB2cq8A5qWwK+rAlULkJkfsUSiF1kjrK0Emk5/DqwEYeyxeW2jDTRsph8MNY80St9X2BgbtrTjMO/oE09NHXz8SsjXRjtEw7mb2SPsvK0nRzc3IoUqABz4NZdqoBhNwSvwsH4OWMSDgu4QMXYo1BriiwoVvNNcjtTtIqa7nR/fuDe8j8D6JLQH0lntYQtuuwqJkCDTgiCwucC3tR4nlTgAvc+dzuR7Nk4ygDCKo9PIAi90SD1vNdZXYC	2022-12-15 21:57:59.006528	2022-12-15 21:57:59.006528	\N
-\.
-
-
---
--- Name: event_participants_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sa
---
-
-SELECT pg_catalog.setval('public.event_participants_id_seq', 14, true);
-
-
---
--- Name: events_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sa
---
-
-SELECT pg_catalog.setval('public.events_id_seq', 4, true);
-
-
---
--- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sa
---
-
-SELECT pg_catalog.setval('public.tags_id_seq', 2, true);
-
-
---
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sa
---
-
-SELECT pg_catalog.setval('public.users_id_seq', 10, true);
+INSERT INTO public.users (id, name, username, email, secret, created_at, updated_at, deleted_at) VALUES (1, 'M Agung Hikmatullah', 'magunghkm', 'magunghkm@mail.co', 'kUBhtNE+dB2cq8A5qWwK+rAlULkJkfsUSiF1kjrK0Emk5/DqwEYeyxeW2jDTRsph8MNY80St9X2BgbtrTjMO/oE09NHXz8SsjXRjtEw7mb2SPsvK0nRzc3IoUqABz4NZdqoBhNwSvwsH4OWMSDgu4QMXYo1BriiwoVvNNcjtTtIqa7nR/fuDe8j8D6JLQH0lntYQtuuwqJkCDTgiCwucC3tR4nlTgAvc+dzuR7Nk4ygDCKo9PIAi90SD1vNdZXYC', '2022-12-15 21:57:59.006528', '2022-12-15 21:57:59.006528', NULL);
 
 
 --
@@ -379,3 +320,4 @@ ALTER TABLE ONLY public.events
 -- PostgreSQL database dump complete
 --
 
+-- +migrate StatementEnd

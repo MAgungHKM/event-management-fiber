@@ -5,7 +5,9 @@ import (
 	"event-management/utils/env"
 	"fmt"
 
+	"github.com/gobuffalo/packr/v2"
 	_ "github.com/lib/pq"
+	migrate "github.com/rubenv/sql-migrate"
 )
 
 var (
@@ -33,4 +35,17 @@ func Setup() {
 	if err != nil {
 		panic(err)
 	}
+}
+
+func Migrate() {
+	migrations := &migrate.PackrMigrationSource{
+		Box: packr.New("migrations", "./sql_migrations"),
+	}
+
+	n, errs := migrate.Exec(Connection, env.Get("DB_DRIVER", "postgres"), migrations, migrate.Up)
+	if errs != nil {
+		panic(errs)
+	}
+
+	fmt.Println("Applied", n, " migrations!")
 }

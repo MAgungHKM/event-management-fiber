@@ -25,6 +25,8 @@ func main() {
 	db.Setup()
 	defer db.Connection.Close()
 
+	db.Migrate()
+
 	cfg := config.Main{
 		AppName: flag.String("app-name", env.Get("APP_NAME", "Event Management"), "Application Name"),
 		Port:    flag.String("port", env.Get("APP_PORT", "3000"), "Port to listen on"),
