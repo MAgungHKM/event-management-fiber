@@ -15,7 +15,7 @@ func SetupEventRoutes(router fiber.Router) {
 	router.Post("/:id/participate", request.New(), event.Participate)
 
 	router.Patch("/:id", request.New(), event.Update)
-	router.Patch("/:id/attend/:code", event.Attend)
+	router.Patch("/:id/attend/:code", jwt.New(), event.Attend)
 
 	router.Delete("/:id", event.Delete)
 	router.Delete("/:id/cancel/:code", event.Cancel)

@@ -434,6 +434,8 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/model.Response'
+      security:
+      - ApiBearerToken: []
       summary: Attend an Event
       tags:
       - Event

@@ -326,6 +326,11 @@ const docTemplate = `{
         },
         "/event/{id}/attend/{code}": {
             "patch": {
+                "security": [
+                    {
+                        "ApiBearerToken": []
+                    }
+                ],
                 "description": "Attend an Event",
                 "consumes": [
                     "application/json"

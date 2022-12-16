@@ -108,6 +108,7 @@ func Participate(c *fiber.Ctx) error {
 // @Failure     422  {object} model.ResponseWithError
 // @Failure     500  {object} model.Response
 // @Router      /event/{id}/attend/{code} [patch]
+// @Security    ApiBearerToken
 func Attend(c *fiber.Ctx) error {
 	rawID := c.Params("id")
 	ID := utils.ParseInt(rawID)
