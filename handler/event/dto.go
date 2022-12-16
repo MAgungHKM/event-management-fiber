@@ -33,7 +33,7 @@ func (request EventRequest) MapToEvent(event *model.Event) error {
 		return err
 	}
 
-	if startDate.Before(*endDate) {
+	if !startDate.Before(*endDate) {
 		return errors.New("start_date must be lesser than end_date", fiber.StatusBadRequest)
 	}
 
