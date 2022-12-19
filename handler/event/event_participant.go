@@ -142,6 +142,7 @@ func Attend(c *fiber.Ctx) error {
 	}
 
 	eventParticipant := model.EventParticipant{ID: *participantID}
+	fmt.Println(eventParticipant)
 
 	err = eventParticipant.Find()
 	if errors.IsValid(err) {

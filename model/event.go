@@ -395,8 +395,7 @@ func (ep *EventParticipant) Attend() (err error) {
 		WHERE deleted_at IS NULL AND id = $1
 	`
 
-	err = db.Connection.QueryRow(sqlStatement, ep.ID).
-		Scan(&ep.ID, &ep.EventID, &ep.Name, &ep.Email, &ep.Status, &ep.CreatedAt, &ep.UpdatedAt, &ep.DeletedAt)
+	_, err = db.Connection.Exec(sqlStatement, ep.ID)
 
 	if err != nil {
 		return
