@@ -19,8 +19,14 @@ func GenerateHash(secret string) string {
 func VerifyHash(secret string, hashedSecret string) bool {
 	pass := p.NewPassword(sha512.New, env.GetInt("HASH_SALT_SIZE", 1), env.GetInt("HASH_KEY_LENGTH", 12), env.GetInt("HASH_ITERATION", 100))
 
-	actualHashedSecret := hashedSecret[:len(hashedSecret)-16]
-	salt := hashedSecret[len(hashedSecret)-16:]
+	saltLength := calculateSaltLength()
+	actualHashedSecret := hashedSecret[:len(hashedSecret)-saltLength]
+	salt := hashedSecret[len(hashedSecret)-saltLength:]
 
 	return pass.VerifyPassword(secret, actualHashedSecret, salt)
+}
+
+func calculateSaltLength() int {
+	saltSize := env.GetInt("HASH_SALT_SIZE", 1)
+	return (saltSize + 2) / 3 * 4
 }
