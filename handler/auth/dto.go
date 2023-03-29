@@ -15,8 +15,8 @@ type AuthResponse struct {
 }
 
 type AuthRequest struct {
-	Username string `json:"username" validate:"required"`
-	Password string `json:"password" validate:"required"`
+	Username string `json:"username" validate:"required" extensions:"x-order=1"`
+	Password string `json:"password" validate:"required" extensions:"x-order=2"`
 }
 
 func (request AuthRequest) GenerateAccessToken() (string, error) {

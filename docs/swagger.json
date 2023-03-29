@@ -1034,11 +1034,13 @@
                 "username"
             ],
             "properties": {
-                "password": {
-                    "type": "string"
-                },
                 "username": {
-                    "type": "string"
+                    "type": "string",
+                    "x-order": "1"
+                },
+                "password": {
+                    "type": "string",
+                    "x-order": "2"
                 }
             }
         },
